@@ -1,9 +1,8 @@
 <template>
   <div class="email-template">
+    <button @click="copyToClipboard">copy to clipboad</button>
     <vue-code-highlight language="html" :key="renderKey">
-      <pre v-text="emailTop"></pre>
-      <pre v-text="generatedHtml"></pre>
-      <pre v-text="emailBottom"></pre>
+      <pre v-text="fullHtml"></pre>
     </vue-code-highlight>
   </div>
 </template>
@@ -41,12 +40,18 @@ export default {
     emailBottom() {
       return emailTemplate.substring(emailTemplate.indexOf(this.contentPlaceholder) + this.contentPlaceholder.length)
     },
+    fullHtml() {
+      return `${this.emailTop}${this.generatedHtml}${this.emailBottom}`
+    },
   },
   methods: {
     handleContentChange() {
       this.generatedHtml = this.$store.state.news.emailHtml;
       this.renderKey++;
     },
+    copyToClipboard() {
+      navigator.clipboard.writeText(this.fullHtml);
+    }
   }
 }
 </script>

@@ -18,14 +18,14 @@
         <label for="title">Title:</label>
         <div class="news__value" @click="titleClick">
           <input v-if="titleEdit" type="text" v-model="title" />
-          <h2 v-else class="news__value">{{ title }}</h2>
+          <h2 v-else>{{ title }}</h2>
         </div>
       </div>
       <div class="news__input">
         <label for="content">Content:</label>
         <div class="news__value" @click="contentClick">
-          <textarea v-if="contentEdit" type="text" v-model="content" />
-          <p v-else>{{ content }}</p>
+          <textarea v-show="contentEdit" type="text" v-model="content" ref="contentTextArea" @input="handleTextAreaInput"/>
+          <p  v-show="!contentEdit">{{ content }}</p>
         </div>
       </div>
     </div>
@@ -112,6 +112,10 @@ export default {
     handleDelete() {
       this.$emit('newsDelete', this.id)
     },
+    handleTextAreaInput() {
+      this.$refs.contentTextArea.style.height = "";
+      this.$refs.contentTextArea.style.height = this.$refs.contentTextArea.scrollHeight + "px";
+    },
   },
   watch: {
     // url: _debounce(function () {
@@ -135,7 +139,7 @@ export default {
 
 <style lang="scss">
 .news {
-  background-color: #f500f5;
+  background-color: #efefef;
   margin-bottom: 1em;
 
   &__input {
@@ -152,6 +156,11 @@ export default {
     display: flex;
     flex: 5;
 
+    > * {
+      padding: 0.3em 0.5em;
+      border: none;
+    }
+
     &--no-edit {
       border: none;
     }
@@ -160,6 +169,9 @@ export default {
   input,
   textarea {
     width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
   }
 }
 </style>
