@@ -2,29 +2,29 @@
   <div class="news card">
     <div class="card-content">
       <div class="news__input">
-        <label>ID:</label>
+        <label class="label">ID:</label>
         <div class="news__value news__value--no-edit">
           {{ id }}
         </div>
       </div>
       <div class="news__input">
-        <label for="url">Url:</label>
+        <label class="label"for="url">Url:</label>
         <div class="news__value" @click="urlClick">
-          <input v-if="urlEdit" type="text" v-model="url" />
+          <input v-if="urlEdit" class="input" type="text" v-model="url" />
           <p v-else>{{ url }}</p>
         </div>
       </div>
       <div class="news__input">
-        <label for="title">Title:</label>
+        <label class="label" for="title">Title:</label>
         <div class="news__value" @click="titleClick">
-          <input v-if="titleEdit" type="text" v-model="title" />
+          <input v-if="titleEdit" class="input" type="text" v-model="title" />
           <h2 v-else>{{ title }}</h2>
         </div>
       </div>
       <div class="news__input">
-        <label for="content">Content:</label>
+        <label class="label" for="content">Content:</label>
         <div class="news__value" @click="contentClick">
-          <textarea v-show="contentEdit" type="text" v-model="content" ref="contentTextArea" @input="handleTextAreaInput"/>
+          <textarea v-show="contentEdit" class="textarea" type="text" v-model="content" ref="contentTextArea" @input="handleTextAreaInput"/>
           <p  v-show="!contentEdit">{{ content }}</p>
         </div>
       </div>

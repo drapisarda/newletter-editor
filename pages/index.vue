@@ -1,6 +1,11 @@
 <template>
   <div class="template">
     <div class="container section">
+      <h1>Newsletter editor</h1>
+      <label class="label">Newsletter intro</label>
+      <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
+    </div>
+    <div class="container section">
       <button class="button" @click="handleAdd">Add a new item</button>
       <div class="template__news-list">
         <NewsItem
