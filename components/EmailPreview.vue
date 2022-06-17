@@ -21,7 +21,7 @@
             width="600"
           >
             <tr
-              class="content"
+              class="email-content"
             >
               <td>
                 <p>{{ content }}</p>
@@ -33,8 +33,8 @@
               :key="item.id"
             >
               <td>
-                <a v-bind:href="item.url">{{ item.title }}</a>
-                <p v-text="item.content"></p>
+                <a class="email-title" v-bind:href="item.url">{{ item.title }}</a>
+                <p class="email-content" v-text="item.content"></p>
               </td>
             </tr>
           </table>

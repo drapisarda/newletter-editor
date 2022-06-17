@@ -7,3 +7,6 @@ table {mso-table-lspace: 0pt; mso-table-rspace: 0pt;}
 {line-height: 100%;}
 img {-ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: 0; text-decoration: none;}
 a img {border: 0;}
+.email-content td > *{ margin: 1em 0;}
+.email-title { font-size: 2em; font-weight: bold; }
+.email-content { margin-top: 1em; }

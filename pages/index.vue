@@ -77,9 +77,9 @@ export default Vue.extend({
   data() {
     return {
       defaultItem: {
-        url: 'google.it',
-        title: 'News!!!',
-        content: `This is the news page!`,
+        url: 'https://www.homeday.de/de/',
+        title: 'This is a title for a good news!',
+        content: 'Nice things happen here!',
       },
     }
   },
