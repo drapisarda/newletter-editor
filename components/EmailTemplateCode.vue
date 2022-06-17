@@ -10,6 +10,7 @@
 <script lang="ts">
 import { component as VueCodeHighlight } from 'vue-code-highlight'
 import emailCss from '../styles/email.css?raw'
+// https://www.arclab.com/en/amlc/how-to-email-newsletter-templates.html
 import emailTemplate from '../templates/emailTemplate.html?raw'
 
 export default {

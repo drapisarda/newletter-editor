@@ -20,14 +20,16 @@
             class="container"
             width="600"
           >
-            <div
+            <tr
               class="email-preview__item"
               v-for="item in news"
               :key="item.id"
             >
-              <a v-bind:href="item.url">{{ item.title }}</a>
-              <p v-text="item.content"></p>
-            </div>
+              <td>
+                <a v-bind:href="item.url">{{ item.title }}</a>
+                <p v-text="item.content"></p>
+              </td>
+            </tr>
           </table>
           <!-- container 600px -->
         </td>
