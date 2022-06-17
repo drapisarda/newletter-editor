@@ -1,25 +1,38 @@
 <template>
   <div class="template">
     <div class="container">
-      <h1>Hello Vue!</h1>
-      <HdButton :modifier="'primary'" @click="addAction">Add</HdButton>
+      <HdButton :modifier="'primary'" @click="handleAdd">Add</HdButton>
       <div class="template__news-list">
-        <News v-for="item in news" :key="item.id" v-bind="item" @newsDelete="handleDelete"/>
+        <NewsItem v-for="item in news" :key="item.id" v-bind="item" @newsDelete="handleDelete"></NewsItem>
       </div>
     </div>
+
+    <details class="email-preview">
+      <summary>Email Preview</summary>
+      <EmailPreview></EmailPreview>
+    </details>
+
+    <details class="email-output">
+      <summary>Results</summary>
+      <EmailTemplateCode></EmailTemplateCode>
+    </details>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { HdButton } from 'homeday-blocks';
-import News from '~/components/News.vue';
+import NewsItem from '~/components/NewsItem.vue';
+import EmailTemplateCode from '~/components/EmailTemplateCode.vue';
+import EmailPreview from '~/components/EmailPreview.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
     HdButton,
-    News
+    NewsItem,
+    EmailTemplateCode,
+    EmailPreview,
   },
   props: {
     defaultNews: {
@@ -29,24 +42,34 @@ export default Vue.extend({
   },
   data() {
     return {
-      defaultNewsItem: {
+      defaultItem: {
+        url: 'google.it',
         title: 'News!!!',
         content: `This is the news page!`,
       },
-      news: this.defaultNews,
     }
   },
+  computed: {
+    news() {
+      return this.$store.state.news.items;
+    },
+  },
   methods: {
-    addAction() {
-      this.news.push({
+    handleAdd() {
+      this.$store.commit('news/addOrUpdate', {
         id: (+new Date).toString(36).slice(-8),
-        ...this.defaultNewsItem,
-      });
+        ...this.defaultItem,
+      })
     },
     handleDelete(value: number) {
-      this.news = this.news.filter(item => item.id !== value);
+      this.$store.commit('news/remove', value);
     }
-  }
+  },
+  watch: {
+    news() {
+      // this.$store.commit('news/updateNewsHtml', document.querySelector('.email-preview table'));
+    }
+  },
 });
 </script>
 

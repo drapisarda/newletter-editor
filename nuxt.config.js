@@ -24,7 +24,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/directives.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,6 +43,13 @@ export default {
   css: ['reset-css', '@/styles/main.scss'],
 
   vite: {
+    server: {
+      hmr: {
+        overlay: false,
+      },
+    },
+    plugins: [
+    ],
     css: {
       preprocessorOptions: {
         scss: {

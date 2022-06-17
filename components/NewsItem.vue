@@ -2,7 +2,12 @@
   <div class="news">
     <div class="container">
       <div class="news__input">
-        <h1>{{ id }}</h1>
+        <label>ID:</label>
+        <div class="news__value news__value--no-edit">
+          {{ id }}
+        </div>
+      </div>
+      <div class="news__input">
         <label for="url">Url:</label>
         <div class="news__value" @click="urlClick">
           <input v-if="urlEdit" type="text" v-model="url" />
@@ -40,24 +45,12 @@
 import { HdButton } from 'homeday-blocks'
 
 export default {
-  name: 'News',
+  name: 'NewsItem',
   components: {
     HdButton,
   },
   props: {
     id: {
-      type: String,
-      default: '',
-    },
-    defaultUrl: {
-      type: String,
-      default: '',
-    },
-    defaultTitle: {
-      type: String,
-      default: '',
-    },
-    defaultContent: {
       type: String,
       default: '',
     },
@@ -67,9 +60,9 @@ export default {
       urlEdit: false,
       titleEdit: false,
       contentEdit: false,
-      url: this.defaultUrl,
-      title: this.defaultTitle,
-      content: this.defaultContent,
+      url: '',
+      title: '',
+      content: '',
     }
   },
   computed: {
@@ -79,9 +72,14 @@ export default {
   },
   created() {
     this.$nuxt.$on('contentEdit', (editingNewsId) => {
-      console.log('contentEdit', editingNewsId)
       if (this.id !== editingNewsId) this.disableEdit()
     })
+  },
+  mounted() {
+    const { id, url, title, content } = this.$store.state.news.items.find(item => item.id === this.id)
+    this.url = url
+    this.title = title
+    this.content = content
   },
   methods: {
     urlClick() {
@@ -102,7 +100,7 @@ export default {
       this.contentEdit = false
     },
     saveAction() {
-      this.$nuxt.$emit('newsSave', {
+      this.$store.commit('news/addOrUpdate', {
         id: this.id,
         url: this.url,
         title: this.title,
@@ -114,6 +112,23 @@ export default {
     handleDelete() {
       this.$emit('newsDelete', this.id)
     },
+  },
+  watch: {
+    // url: _debounce(function () {
+    //   console.log('LOL')
+    //   this.urlEdit = false
+
+    //   if (this.title && this.content) return
+
+    //   scrape(this.url)
+    //     .then((metadata) => {
+    //       console.log('metadata', metadata);
+    //       // if (!this.title)
+    //       //   this.title = metadata.getContentByPropertyName('title')
+    //       // if (!this.content)
+    //       //   this.content = metadata.getContentByPropertyName('description')
+    //     })
+    // }, 300),
   },
 }
 </script>
@@ -128,9 +143,18 @@ export default {
     margin-bottom: 0.5em;
   }
 
+  label {
+    flex: 1;
+  }
+
   &__value {
     border: 1px solid #fefefe;
-    flex: 1;
+    display: flex;
+    flex: 5;
+
+    &--no-edit {
+      border: none;
+    }
   }
 
   input,
