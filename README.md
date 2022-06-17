@@ -1,5 +1,8 @@
 # hd-dev-news
 
+Little project to easily create a newletter email HTML contente.
+Done for the Homeday's Digital Product Week in June 2022.
+
 ## Build Setup
 
 ```bash
