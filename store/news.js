@@ -1,6 +1,7 @@
 export const state = () => ({
   items: [],
   emailHtml: '',
+  content: '',
 })
 
 export const getter = {
@@ -25,6 +26,9 @@ export const mutations = {
   updateEmailHtml(state, html) {
     state.emailHtml = html
     $nuxt.$emit('updateCode')
+  },
+  addOrUpdateContent(state, content) {
+    state.content = content;
   }
 }
 

@@ -21,7 +21,14 @@
             width="600"
           >
             <tr
-              class="email-preview__item"
+              class="content"
+            >
+              <td>
+                <p>{{ content }}</p>
+              </td>
+            </tr>
+            <tr
+              class="item"
               v-for="item in news"
               :key="item.id"
             >
@@ -58,6 +65,9 @@ export default {
     news() {
       return this.$store.state.news.items
     },
+    content() {
+      return this.$store.state.news.content
+    },
     emailTop() {
       return emailTemplate.substring(
         emailTemplate.indexOf(this.tableStartPlaceholder) +
@@ -71,6 +81,9 @@ export default {
           this.contentPlaceholder.length,
         emailTemplate.indexOf(this.tableEndPlaceholder)
       )
+    },
+    content() {
+      return this.$store.state.news.content
     },
   },
   updated() {

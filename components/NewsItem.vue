@@ -41,12 +41,10 @@
 </template>
 
 <script>
-import { HdButton } from 'homeday-blocks'
 
 export default {
   name: 'NewsItem',
   components: {
-    HdButton,
   },
   props: {
     id: {
@@ -115,23 +113,6 @@ export default {
       this.$refs.contentTextArea.style.height = "";
       this.$refs.contentTextArea.style.height = this.$refs.contentTextArea.scrollHeight + "px";
     },
-  },
-  watch: {
-    // url: _debounce(function () {
-    //   console.log('LOL')
-    //   this.urlEdit = false
-
-    //   if (this.title && this.content) return
-
-    //   scrape(this.url)
-    //     .then((metadata) => {
-    //       console.log('metadata', metadata);
-    //       // if (!this.title)
-    //       //   this.title = metadata.getContentByPropertyName('title')
-    //       // if (!this.content)
-    //       //   this.content = metadata.getContentByPropertyName('description')
-    //     })
-    // }, 300),
   },
 }
 </script>

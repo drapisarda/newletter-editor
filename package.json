@@ -14,7 +14,6 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",
     "core-js": "^3.8.3",
-    "homeday-blocks": "^19.npm install vuex@next --save2.1",
     "lodash": "^4.17.21",
     "nuxt": "^2.14.12",
     "reset-css": "^5.0.1",

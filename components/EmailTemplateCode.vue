@@ -29,7 +29,6 @@ export default {
       contentPlaceholder: '<!-- content -->',
       tableStartPlaceholder: '<!-- background table start -->',
       tableEndPlaceholder: '<!-- background table end -->',
-      generatedHtml: this.$store.state.news.emailHtml,
       renderKey: 0,
     }
   },
@@ -41,13 +40,15 @@ export default {
     emailBottom() {
       return emailTemplate.substring(emailTemplate.indexOf(this.contentPlaceholder) + this.contentPlaceholder.length)
     },
+    generatedHtml() {
+      return this.$store.state.news.emailHtml;
+    },
     fullHtml() {
       return `${this.emailTop}${this.generatedHtml}${this.emailBottom}`
     },
   },
   methods: {
     handleContentChange() {
-      this.generatedHtml = this.$store.state.news.emailHtml;
       this.renderKey++;
     },
     copyToClipboard() {
