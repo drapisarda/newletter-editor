@@ -1,6 +1,6 @@
 <template>
-  <div class="news">
-    <div class="container">
+  <div class="news card">
+    <div class="card-content">
       <div class="news__input">
         <label>ID:</label>
         <div class="news__value news__value--no-edit">
@@ -29,14 +29,13 @@
         </div>
       </div>
     </div>
-    <div class="news__actions">
-      <HdButton
-        :modifier="'primary'"
+    <div class="news__actions buttons">
+      <button
+        class="button is-primary"
         @click="saveAction"
         :disabled="!saveIsEnabled"
-        >Save</HdButton
-      >
-      <HdButton :modifier="'primary'" @click="handleDelete">Delete</HdButton>
+        >Save</button>
+      <button class="button is-danger" @click="handleDelete">Delete</button>
     </div>
   </div>
 </template>
