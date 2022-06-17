@@ -2,12 +2,6 @@
   <div class="news card">
     <div class="card-content">
       <div class="news__input">
-        <label class="label">ID:</label>
-        <div class="news__value news__value--no-edit">
-          {{ id }}
-        </div>
-      </div>
-      <div class="news__input">
         <label class="label"for="url">Url:</label>
         <div class="news__value" @click="urlClick">
           <input v-if="urlEdit" class="input" type="text" v-model="url" />
@@ -127,8 +121,9 @@ export default {
     margin-bottom: 0.5em;
   }
 
-  label {
+  .label {
     flex: 1;
+    margin-bottom: 0;
   }
 
   &__value {

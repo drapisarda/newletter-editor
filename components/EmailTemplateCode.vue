@@ -1,6 +1,6 @@
 <template>
   <div class="email-template">
-    <button @click="copyToClipboard">copy to clipboad</button>
+    <button class="button is-info" @click="copyToClipboard">copy to clipboad</button>
     <vue-code-highlight language="html" :key="renderKey">
       <pre v-text="fullHtml"></pre>
     </vue-code-highlight>
