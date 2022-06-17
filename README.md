@@ -1,4 +1,4 @@
-# hd-dev-news
+# Newsletter Editor
 
 Little project to easily create a newletter email HTML content.
 Done for the Homeday's Digital Product Week in June 2022.
