@@ -1,7 +1,7 @@
 <template>
   <div class="template">
-    <div class="container">
-      <button class="button" @click="handleAdd">Add</button>
+    <div class="container section">
+      <button class="button" @click="handleAdd">Add a new item</button>
       <div class="template__news-list">
         <NewsItem
           v-for="item in news"
@@ -12,14 +12,14 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container section">
       <details class="email-preview">
         <summary>Email Preview</summary>
         <EmailPreview></EmailPreview>
       </details>
     </div>
 
-    <div class="container">
+    <div class="container section">
       <details class="email-output">
         <summary>Results</summary>
         <EmailTemplateCode></EmailTemplateCode>

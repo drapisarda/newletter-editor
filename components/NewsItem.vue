@@ -28,14 +28,14 @@
           <p  v-show="!contentEdit">{{ content }}</p>
         </div>
       </div>
-    </div>
-    <div class="news__actions buttons">
-      <button
-        class="button is-primary"
-        @click="saveAction"
-        :disabled="!saveIsEnabled"
-        >Save</button>
-      <button class="button is-danger" @click="handleDelete">Delete</button>
+      <div class="news__actions buttons">
+        <button
+          class="button is-primary"
+          @click="saveAction"
+          :disabled="!saveIsEnabled"
+          >Save</button>
+        <button class="button is-danger" @click="handleDelete">Delete</button>
+      </div>
     </div>
   </div>
 </template>
